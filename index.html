@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>
+      Frontend Mentor | Newsletter sign-up form with success message
+    </title>
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <form id="signupForm" action="#">
+      <div class="formLeft">
+        <div class="leftTop">
+          <h1>Stay updated!</h1>
+          <p>Join 60,000+ product managers receiving monthly updates on:</p>
+          <ol>
+            <li>Product discovery and building what matters</li>
+            <li>Measuring to ensure updates are a success</li>
+            <li>And much more!</li>
+          </ol>
+        </div>
+        <div class="leftBottom">
+          <label for="email">Email address: </label>
+          <input type="email" placeholder="email@company.com" id="email" />
+          <div id="emailError" style="color: red"></div>
+          <button id="subscribeBtn">Subscribe to monthly newsletter</button>
+          <!-- Hidden confirmation message -->
+        </div>
+      </div>
+
+      <div class="formRight"></div>
+    </form>
+    <div id="confirmationMessage">
+      <div class="message">
+        <img src="./assets/images/icon-success.svg" alt="icon" />
+        <p>
+          Thanks for subscribing! A confirmation email has been sent. Please
+          open it and click the button inside to confirm your subscription.
+        </p>
+        <button id="dismissBtn">Dismiss message.</button>
+      </div>
+    </div>
+    <script>
+      // Declare variables
+      let confirmationMessage = document.querySelector("#confirmationMessage");
+      let subscribeBtn = document.getElementById("subscribeBtn");
+      let dismissBtn = document.getElementById("dismissBtn");
+      let emailInput = document.querySelector("#email");
+      let emailError = document.getElementById("emailError");
+      let form = document.querySelector("form");
+
+      // Subscribe button click event
+      subscribeBtn.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default form submission behavior
+        validateAndSubscribe();
+        form.style.display = "none";
+      });
+
+      // Dismiss button click event
+      dismissBtn.addEventListener("click", function () {
+        confirmationMessage.style.display = "none";
+        form.style.display = "flex";
+        // Add any additional dismiss actions if needed
+      });
+
+      // Function to validate email and show confirmation
+      function validateAndSubscribe() {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(emailInput.value)) {
+          // Display email error message
+          emailError.textContent = "Invalid email address";
+          return;
+        }
+
+        // Clear any previous error messages
+        emailError.textContent = "";
+
+        // Proceed with subscription
+        let emailValue = emailInput.value;
+        // Show confirmation message
+        confirmationMessage.style.display = "flex";
+        // Log the email value (you can use it as needed)
+        console.log("Email value: ", emailValue);
+        // Proceed with form submission or other actions
+        // document.getElementById("signupForm").submit(); // Uncomment this line if you want to submit the form
+      }
+    </script>
+  </body>
+</html>
