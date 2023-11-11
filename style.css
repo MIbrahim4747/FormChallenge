@@ -30,6 +30,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
 }
@@ -38,6 +39,15 @@ p {
   font-size: calc(1rem + 0.3vw);
 }
 
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
 form {
   width: 70vw;
   background-color: white;
@@ -115,7 +125,7 @@ form {
   left: 0;
   background-color: rgba(0, 0, 0, 0.959);
   backdrop-filter: blur(5px);
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
 }
