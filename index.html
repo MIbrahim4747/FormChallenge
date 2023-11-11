@@ -3,18 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
       href="./assets/images/favicon-32x32.png"
     />
-
     <title>
       Frontend Mentor | Newsletter sign-up form with success message
     </title>
-
     <link rel="stylesheet" href="./style.css" />
   </head>
 
@@ -38,7 +35,6 @@
           <input type="email" placeholder="email@company.com" id="email" />
           <div id="emailError" style="color: red"></div>
           <button id="subscribeBtn">Subscribe to monthly newsletter</button>
-          <!-- Hidden confirmation message -->
         </div>
       </div>
 
@@ -66,7 +62,6 @@
     </div>
 
     <script>
-      // Declare variables
       let confirmationMessage = document.querySelector("#confirmationMessage");
       let subscribeBtn = document.getElementById("subscribeBtn");
       let dismissBtn = document.getElementById("dismissBtn");
@@ -74,40 +69,31 @@
       let emailError = document.getElementById("emailError");
       let form = document.querySelector("form");
 
-      // Subscribe button click event
       subscribeBtn.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent default form submission behavior
+        event.preventDefault();
         validateAndSubscribe();
       });
 
-      // Dismiss button click event
       dismissBtn.addEventListener("click", function () {
         confirmationMessage.style.display = "none";
         form.style.display = "flex";
-        // Add any additional dismiss actions if needed
       });
 
-      // Function to validate email and show confirmation
       function validateAndSubscribe() {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!emailRegex.test(emailInput.value)) {
-          // Display email error message
+          emailInput.classList.add("error");
           emailError.textContent = "Valid email required";
           return;
         }
 
-        // Clear any previous error messages
+        emailInput.classList.remove("error");
         emailError.textContent = "";
 
-        // Proceed with subscription
         let emailValue = emailInput.value;
-        // Show confirmation message
         confirmationMessage.style.display = "flex";
-        // Log the email value (you can use it as needed)
         console.log("Email value: ", emailValue);
-        // Proceed with form submission or other actions
-        // document.getElementById("signupForm").submit(); // Uncomment this line if you want to submit the form
       }
     </script>
   </body>
