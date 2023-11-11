@@ -31,7 +31,10 @@
           </ol>
         </div>
         <div class="leftBottom">
-          <label for="email">Email address: </label>
+          <div class="label">
+            <label for="email">Email address: </label
+            ><span id="emailError" style="color: red"></span>
+          </div>
           <input type="email" placeholder="email@company.com" id="email" />
           <div id="emailError" style="color: red"></div>
           <button id="subscribeBtn">Subscribe to monthly newsletter</button>
@@ -75,7 +78,6 @@
       subscribeBtn.addEventListener("click", function (event) {
         event.preventDefault(); // Prevent default form submission behavior
         validateAndSubscribe();
-        form.style.display = "none";
       });
 
       // Dismiss button click event
@@ -91,7 +93,7 @@
 
         if (!emailRegex.test(emailInput.value)) {
           // Display email error message
-          emailError.textContent = "Invalid email address";
+          emailError.textContent = "Valid email required";
           return;
         }
 

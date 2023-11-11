@@ -31,7 +31,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
@@ -117,6 +117,15 @@ form {
   border-radius: 10px;
 }
 
+.label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label span {
+  font-size: calc(4px + 1vw);
+}
+
 #confirmationMessage {
   position: absolute;
   height: 100%;
@@ -153,6 +162,7 @@ form {
   form {
     padding: 0;
     flex-direction: column-reverse;
+    margin-bottom: 2rem;
   }
 
   .formRight {
@@ -174,5 +184,8 @@ form {
     width: 100%;
     min-height: 100%;
     border-radius: 0px;
+  }
+  .attribution {
+    bottom: 0px;
   }
 }
